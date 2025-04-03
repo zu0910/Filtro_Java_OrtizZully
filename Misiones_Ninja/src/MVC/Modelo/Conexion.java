@@ -12,9 +12,9 @@ import java.sql.*;
 public class Conexion {
     Connection conec = null;
     
-    private String URL = "jdbc:mysql://bbatmzfqkyi5r7qydwon-mysql.services.clever-cloud.com:3306/bbatmzfqkyi5r7qydwon";
-    private String USER = "bbatmzfqkyi5r7qydwon";
-    private String PASS = "oV1zkNSt7p9tawK7AHV0"; 
+    private String URL = "jdbc:mysql://ber1roujd16vejundrzm-mysql.services.clever-cloud.com:3306/ber1roujd16vejundrzm ";
+    private String USER = "uu0o0mzhs71oofnu";
+    private String PASS = "vXuVgNW3gEHJHzvq6TCk";
     
     public Connection getConexion(){
         try{

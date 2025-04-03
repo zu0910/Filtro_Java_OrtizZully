@@ -5,18 +5,21 @@
 package MVC;
 
 import MVC.Controlador.HabilidadControlador;
-import MVC.Modelo.HabilidadDAO;
+import MVC.Modelo.Conexion;
+import MVC.Modelo.ConsultasDAO;
 import MVC.Vista.HabilidadVista;
 
 
 
 public class main {
     public static void main(String[] args) {
-        HabilidadDAO dao = new HabilidadDAO();
+        ConsultasDAO dao = new ConsultasDAO();
         HabilidadVista vista = new HabilidadVista();
         HabilidadControlador ctrlHa = new HabilidadControlador(dao,vista);
-        
+
         ctrlHa.iniciar();
+        Conexion con = new Conexion();
+        con.getConexion();
     }
     
 }
