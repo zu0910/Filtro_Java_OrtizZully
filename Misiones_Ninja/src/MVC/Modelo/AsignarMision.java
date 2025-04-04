@@ -1,7 +1,9 @@
 package MVC.Modelo;
 
 public class AsignarMision {
+    private int id_mision_ninja;
     private String fecha_inicio;
+    private String fecha_fin;
     private int id_ninja;
     private int id_mision;
 
@@ -33,5 +35,21 @@ public class AsignarMision {
 
     public void setId_mision(int id_mision) {
         this.id_mision = id_mision;
+    }
+
+    public int getId_mision_ninja() {
+        return id_mision_ninja;
+    }
+
+    public void setId_mision_ninja(int id_mision_ninja) {
+        this.id_mision_ninja = id_mision_ninja;
+    }
+
+    public String getFecha_fin() {
+        return fecha_fin;
+    }
+
+    public void setFecha_fin(String fecha_fin) {
+        this.fecha_fin = fecha_fin;
     }
 }

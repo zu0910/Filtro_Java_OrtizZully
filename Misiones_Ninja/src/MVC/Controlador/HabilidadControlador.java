@@ -4,43 +4,36 @@
  */
 package MVC.Controlador;
 
-import MVC.Modelo.AsignarMision;
-import MVC.Modelo.ConsultasDAO;
-import MVC.Modelo.Habilidad;
+import  MVC.Modelo.*;
 import MVC.Vista.HabilidadVista;
 import java.util.Scanner;
 
 
 public class HabilidadControlador {
-    private Habilidad habi;
     private HabilidadVista vista;
     private ConsultasDAO dao;
     private Scanner scanner;
 
-    public HabilidadControlador(Habilidad habi,HabilidadVista vista, ConsultasDAO dao, Scanner scanner) {
-        this.habi = habi;
+    public HabilidadControlador(HabilidadVista vista, ConsultasDAO dao, Scanner scanner) {
         this.vista = vista;
         this.dao = dao;
         this.scanner = new Scanner(System.in);
     }
 
-    public HabilidadControlador(ConsultasDAO dao, HabilidadVista vista) {
-        this.dao = dao;
-        this.vista = vista;
-        this.scanner = new Scanner(System.in);
-    }
+
     
     public void iniciar(){
         boolean salir = true;
         while(salir == true){
             System.out.println("------------ ALDEA KANOHA -----------------------");
-            System.out.println("1). Ver Ninjas con habilidad");
-            System.out.println("2). Mostrar las misiones diponibles de un ninja en especifico.");
-            System.out.println("3). Mostrar misiones completadas por un ninja en especifico.");
-            System.out.println("4). Asignar mision a un ninja registrando su fecha de inicio");
-            System.out.println("5). Marcar una mision completada con su fecha fin");
+            System.out.println("1). Listar todos los  Ninjas con su habilidad");
+            System.out.println("2). Mostrar las misiones diponibles de un ninja.");
+            System.out.println("3). Mostrar misiones completadas para un ninja.");
+            System.out.println("4). Asignar mision a un ninja.");
+            System.out.println("5). Marcar una mision completada.");
             System.out.println("6). Mostrar todas la misiones completadas");
             System.out.println("7). Salir");
+            System.out.println("Seleccione una de las opciones del menu: ");
             int opc = scanner.nextInt();
 
             switch(opc){
@@ -48,13 +41,37 @@ public class HabilidadControlador {
                     vista.mostrarNinjaConHabi(dao.MostrarNinjaConHabili());
                     break;
 
+                case 2:
+                    System.out.println("ID del ninja: ");
+                    int idN = scanner.nextInt();
+                    vista.mostrarMisionesDisponibles(dao.MotrarMisionesDisponibles(idN));
+                    break;
+
+                case 3:
+                    System.out.println("ID del ninja: ");
+                    idN = scanner.nextInt();
+                    vista.mostrarMisionesDisponibles(dao.MotrarMisionesDisponibles(idN));
+                    break;
                 case 4:
                     AsignarMision am = vista.asignarMisi();
                     dao.AsignarMision(am);
                     System.out.println("Misión Asignada.");
                     break;
+
+                case 5:
+                    System.out.println("ID del ninja: ");
+                    int IDn = scanner.nextInt();
+                    System.out.println("ID de la mision: ");
+                    int IDm = scanner.nextInt();
+                    dao.CompletarMision(IDn, IDm);
+                    break;
+
+                case 6:
+                    vista.mostrarMisionesCompletadas(dao.MostrarTodosMisionesCompletas());
+                    break;
                 case 7:
                     salir = false;
+                    System.out.println("Byw!!!");
                     break;
             }
         }

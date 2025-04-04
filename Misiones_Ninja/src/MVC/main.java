@@ -15,7 +15,7 @@ public class main {
     public static void main(String[] args) {
         ConsultasDAO dao = new ConsultasDAO();
         HabilidadVista vista = new HabilidadVista();
-        HabilidadControlador ctrlHa = new HabilidadControlador(dao,vista);
+        HabilidadControlador ctrlHa = new HabilidadControlador(vista, dao, null);
 
         ctrlHa.iniciar();
         Conexion con = new Conexion();
