@@ -50,7 +50,7 @@ public class HabilidadControlador {
                 case 3:
                     System.out.println("ID del ninja: ");
                     idN = scanner.nextInt();
-                    vista.mostrarMisionesDisponibles(dao.MotrarMisionesDisponibles(idN));
+                    vista.mostrarMisionesCompletadas(dao.MostrarMisionesCompletadasNinja(idN));
                     break;
                 case 4:
                     AsignarMision am = vista.asignarMisi();

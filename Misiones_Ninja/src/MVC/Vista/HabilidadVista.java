@@ -58,7 +58,6 @@ public class HabilidadVista {
         int IdM = teclado.nextInt();
         teclado.nextLine();
         System.out.println("Fecha de inicio: ");
-        teclado.nextLine();
         String fechaI = teclado.nextLine();
         return new AsignarMision(fechaI, IdN, IdM);
 

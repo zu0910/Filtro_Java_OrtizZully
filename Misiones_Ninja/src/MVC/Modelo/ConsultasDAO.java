@@ -46,9 +46,9 @@ public class ConsultasDAO extends Conexion {
 
             while (rs.next()) {
                 Habilidad habi = new Habilidad();
-                habi.setId_ninja(rs.getInt("id_ninja"));
-                habi.setNombre(rs.getString("nombre"));
-                habi.setDescripcion(rs.getString("descripcion"));
+                habi.setId_ninja(rs.getInt(1));
+                habi.setNombre(rs.getString(2));
+                habi.setDescripcion(rs.getString(3));
                 listNinja.add(habi);
             }
         } catch (SQLException e) {
@@ -66,8 +66,7 @@ public class ConsultasDAO extends Conexion {
         ResultSet rs = null;
         Connection conec = getConexion();
 
-        String sql = "SELECT * FROM Mision m" +
-                "WHERE NOT EXIST (SELECT 1 FROM Mision_Ninja mn WHERE mn.id_mision = m.id_mision)";
+        String sql = "SELECT * FROM Mision m WHERE id_mision NOT IN (SELECT 1 FROM Mision_Ninja mn WHERE mn.id_mision = m.id_mision)";
 
         try{
             ps = conec.prepareStatement(sql);
@@ -124,7 +123,7 @@ public class ConsultasDAO extends Conexion {
             ps.setInt(1,am.getId_ninja());
             ps.setInt(2,am.getId_mision());
             ps.setString(3, am.getFecha_inicio());
-            ps.executeQuery();
+            ps.executeUpdate();
             System.out.println("Mision ingresada con exito.");
             return true;
         }catch (SQLException e) {
